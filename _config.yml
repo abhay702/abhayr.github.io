@@ -3,23 +3,20 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: You
-middle_name: R.
-last_name: Name
+first_name: Abhay
+last_name: R
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Prefer emails — they don’t go to spam (usually). Or just ping me on GitHub like it’s 1999.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  A Personal Portfolio Website
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+  Coded in peace, themed with al-folio, deployed with AWS — zero bugs guaranteed*.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://alshedivat.github.io # the base hostname & protocol for your site
-baseurl: /al-folio # the subpath of your site, e.g. /blog/. Leave blank for root
+url: https://abhayr.github.io # the base hostname & protocol for your site
+baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
@@ -151,8 +148,8 @@ collections:
     defaults:
       layout: post
     output: true
-  projects:
-    output: true
+  # projects:
+  #   output: false 
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -316,13 +313,13 @@ filtered_bibtex_keywords:
     inspirehep_id,
     pdf,
     poster,
-    preview,
     selected,
     slides,
     supp,
     video,
-    website,
+    website
   ]
+
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
 max_author_limit: 3 # leave blank to always show all authors
