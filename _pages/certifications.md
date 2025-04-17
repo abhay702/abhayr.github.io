@@ -8,7 +8,7 @@ nav_order: 4
 
 profiles:
   - align: left
-    image: cert_web_analytics.png
+    image: cert_web_analytics.jpg
     image_circular: false
     more_info: >
       <p><strong>Certification:</strong> Digital Skills: Web Analytics</p>
@@ -16,7 +16,7 @@ profiles:
       <p><strong>Date:</strong> Sept 2023</p>
 
   - align: right
-    image: cert_tata.png
+    image: cert_tata.jpg
     image_circular: false
     more_info: >
       <p><strong>Certification:</strong> Data Visualisation: Empowering Business with Effective Insights</p>
@@ -25,7 +25,7 @@ profiles:
       <p><strong>Skills:</strong> Choosing visuals, storytelling with data, insight communication</p>
 
   - align: left
-    image: cert_accenture.png
+    image: cert_accenture.jpg
     image_circular: false
     more_info: >
       <p><strong>Certification:</strong> Data Analytics and Visualization Job Simulation</p>
