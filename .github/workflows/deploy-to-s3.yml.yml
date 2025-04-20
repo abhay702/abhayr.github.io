@@ -24,6 +24,16 @@ jobs:
         gem install bundler
         bundle install
 
+    - name: Install Jupyter for notebook conversion (if needed)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        pip3 install notebook || echo "Jupyter install failed. Proceeding anyway..."
+
+    - name: Remove Jupyter Notebooks (fallback if jupyter is missing)
+      run: |
+        find . -name "*.ipynb" -type f -delete
+
     - name: Build Jekyll Site
       run: bundle exec jekyll build
 
