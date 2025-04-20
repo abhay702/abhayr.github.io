@@ -1,0 +1,48 @@
+name: Build Jekyll Site and Deploy to S3
+
+on:
+  push:
+    branches: [main]  # Trigger only on pushes to main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      BUCKET_NAME: personal-portfolio-website-abhay
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'  # Adjust for your Ruby version
+        bundler-cache: true  # This will cache your bundle install
+    
+    - name: Install dependencies
+      run: |
+        bundle install
+    
+    - name: Build Jekyll site
+      run: |
+        echo "Building Jekyll site..."
+        bundle exec jekyll build
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1  # Change region as needed
+    
+    - name: Deploy to S3
+      run: |
+        echo "Deploying to S3..."
+        aws s3 sync _site/ s3://${BUCKET_NAME}/ --delete
+    
+    - name: Invalidate CloudFront Cache
+      if: ${{ secrets.CLOUDFRONT_DIST_ID != '' }}
+      run: |
+        echo "Invalidating CloudFront cache..."
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths "/*"

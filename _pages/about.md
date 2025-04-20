@@ -33,7 +33,7 @@ Hi, I’m **Abhay**, a professional Googler, full-time keyboard whisperer, and p
 - Talking to servers like they’re people.
 - Fixing one bug and accidentally creating three more.
 - Running `docker-compose` like a prayer ritual.
-- Asking ChatGPT to write bios like this one.
+
 
 I built an FAQ chatbot that’s basically the office version of “ask your mom.” I also made a resume scanner that’s way better at judging resumes than HR. Fair? No. Funny? Absolutely.
 
