@@ -1,4 +1,4 @@
-name: Upload Website
+name: Deploy Jekyll Site to S3 with CloudFront Invalidation
 
 on:
   push:
@@ -11,35 +11,42 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.4 # or your Ruby version
+        ruby-version: 3.1
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: |
         gem install bundler
         bundle install
 
-    - name: Build Jekyll Site
+    - name: Build Jekyll site
       run: bundle exec jekyll build
 
-    - name: Optimize CSS with PurgeCSS
+    - name: Run PurgeCSS
       run: |
         npm install -g purgecss
         purgecss -c purgecss.config.js
 
-    - name: Upload to S3 and Invalidate CloudFront Cache
-      uses: kersvers/s3-sync-with-cloudfront-invalidation@v1.0.0
+    - name: Sync _site/ to S3
+      uses: jakejarvis/s3-sync-action@master
       with:
-        args: --acl public-read --follow-symlinks --delete
+        args: --follow-symlinks --delete --exclude '.git*/*'
       env:
+        SOURCE_DIR: _site
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DIST_ID }}
-        AWS_REGION: 'ap-south-1'              # change if needed
-        SOURCE_DIR: '_site'                   # Jekyll output
-        DEST_DIR: ''                          # upload to root of bucket
+
+    - name: Invalidate CloudFront Cache
+      uses: chetan/invalidate-cloudfront-action@v2
+      env:
+        DISTRIBUTION: ${{ secrets.CLOUDFRONT_DIST_ID }}
+        PATHS: '/*'
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
