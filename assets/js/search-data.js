@@ -66,13 +66,6 @@ ninja.data = [{
           window.open("https://open.spotify.com/user/31btohr4xz7gw4u3y36lybogobzq", "_blank");
         },
       },{
-        id: 'social-whatsapp',
-        title: 'whatsapp',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://wa.me/918976416272", "_blank");
-        },
-      },{
         id: 'social-x',
         title: 'X',
         section: 'Socials',
