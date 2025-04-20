@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:  # Enables manual trigger from GitHub UI
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Set up Ruby
@@ -18,15 +19,15 @@ jobs:
       with:
         ruby-version: 3.1
 
-    - name: Install dependencies
+    - name: Install Ruby Dependencies
       run: |
         gem install bundler
         bundle install
 
-    - name: Build Jekyll site
+    - name: Build Jekyll Site
       run: bundle exec jekyll build
 
-    - name: Run PurgeCSS
+    - name: Optimize CSS using PurgeCSS
       run: |
         npm install -g purgecss
         purgecss -c purgecss.config.js
@@ -42,11 +43,11 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-    - name: Invalidate CloudFront
+    - name: Invalidate CloudFront Cache
       uses: chetan/invalidate-cloudfront-action@v2
       env:
-        DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+        DISTRIBUTION: ${{ secrets.CLOUDFRONT_DIST_ID }}
         PATHS: '/*'
-        AWS_REGION: 'us-east-1'
+        AWS_REGION: ${{ secrets.AWS_REGION }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
