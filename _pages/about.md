@@ -44,8 +44,4 @@ I built an FAQ chatbot that’s basically the office version of “ask your mom.
 
 > _“Move fast and break things,” they said. So I did. And now I’m not allowed near production._
 
----
 
-Welcome to my corner of the internet. Expect a mix of tech, sarcasm, and the occasional bug disguised as a feature.
-
----
