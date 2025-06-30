@@ -28,31 +28,46 @@
     ]
   },
   "work": [
-    {
-      "name": "Operisoft Private Limited",
-      "position": "Cloud Support Intern",
-      "url": "",
-      "startDate": "2025-01-01",
-      "summary": "Worked with AWS services to support and optimize cloud deployments, contributing to hands-on DevOps workflows.",
-      "highlights": [
-        "Explored EC2, IAM, VPC, CloudWatch, and AWS CLI.",
-        "Prepared for AWS Solutions Architect certification."
-      ]
-    },
-    {
-      "name": "Oil and Natural Gas Corporation (ONGC)",
-      "position": "Software Developer Intern",
-      "url": "",
-      "startDate": "2024-05-01",
-      "endDate": "2024-07-31",
-      "summary": "Built and deployed an ML-driven chatbot for internal knowledge retrieval.",
-      "highlights": [
-        "Achieved 99% intent recognition accuracy.",
-        "Dockerized app for seamless deployment.",
-        "Developed backend for FAQ management and updates."
-      ]
-    }
-  ],
+  {
+    "name": "LenDen Club",
+    "position": "Graduate Engineer Trainee – DevOps",
+    "url": "",
+    "startDate": "2025-06-01",
+    "summary": "Working on streamlining CI/CD pipelines, implementing GitOps workflows, and deploying containerized applications.",
+    "highlights": [
+      "Designed and maintained CI/CD pipelines using GitHub Actions.",
+      "Practiced containerization with Docker and orchestration tools.",
+      "Automated infrastructure provisioning and deployments."
+    ]
+  },
+  {
+    "name": "Operisoft Private Limited",
+    "position": "Cloud Support Intern",
+    "url": "",
+    "startDate": "2025-01-01",
+    "endDate": "2025-05-31",
+    "summary": "Worked with AWS services to support and optimize cloud deployments, contributing to hands-on DevOps workflows.",
+    "highlights": [
+      "Explored EC2, IAM, VPC, S3, CloudWatch, and AWS CLI.",
+      "Troubleshot infrastructure issues and improved monitoring.",
+      "Prepared for AWS Solutions Architect certification (SAA-C03)."
+    ]
+  },
+  {
+    "name": "Oil and Natural Gas Corporation (ONGC)",
+    "position": "Software Developer Intern",
+    "url": "https://github.com/abhay702/InfoAssist",
+    "startDate": "2024-05-01",
+    "endDate": "2024-07-31",
+    "summary": "Built and deployed an ML-driven chatbot for internal knowledge retrieval.",
+    "highlights": [
+      "Achieved 99% intent recognition accuracy.",
+      "Dockerized app for seamless deployment.",
+      "Developed backend for FAQ management and real-time updates."
+    ]
+  }
+]
+
   "education": [
     {
       "institution": "NMIMS University",
